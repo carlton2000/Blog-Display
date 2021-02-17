@@ -36,6 +36,7 @@
           :disabled="!valid"
           color="success"
           class="mr-4"
+          to="/Home" exact
         >
           Validate
         </v-btn>
