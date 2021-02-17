@@ -34,9 +34,6 @@
       </v-card-subtitle>
 
       <v-card-actions>
-        <v-btn color="blue lighten-1" @click="alert = !alert" text>
-          Comments
-        </v-btn>
         <a href="/create"
           ><v-btn @click="toggleUpdate(blog)" color="green lighten-1" text>
             Update
@@ -47,7 +44,7 @@
         </v-btn>
       </v-card-actions>
     
-      <v-alert
+      <!-- <v-alert
         :value="alert"
         color="blue"
         dark
@@ -55,8 +52,9 @@
         icon="mdi-home"
         transition="scale-transition"
       >
+       </v-alert> -->
         <Comments></Comments>
-      </v-alert>
+     
        <br />
     </v-card>
   </div>

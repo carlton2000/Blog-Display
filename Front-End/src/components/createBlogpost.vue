@@ -53,6 +53,11 @@
           >
             Create Blog
           </v-btn>
+          <v-btn 
+          to="/Home" exact
+          >
+            Home
+          </v-btn>
         </v-card-actions>
       </v-form>
     </v-card>

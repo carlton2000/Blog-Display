@@ -9,10 +9,10 @@
       <v-icon>mdi-post</v-icon>
     </v-btn>
     <v-spacer></v-spacer>
-    <v-btn to="/" exact>
+    <!-- <v-btn to="/" exact>
       <span class="mr-3">Logout</span>
       <v-icon>mdi-door</v-icon>
-    </v-btn>
+    </v-btn> -->
   </v-app-bar>
 </template>
 
