@@ -39,10 +39,6 @@
         >
           Validate
         </v-btn>
-
-        <v-btn color="primary" class="mr-4" @click="reset">
-          Reset Form
-        </v-btn>
       </v-form>
     </div>
   </v-app>
@@ -111,7 +107,7 @@ export default {
 </script>
 <style scoped>
 #app {
-  background-color: #daedff;
+  background-color: #bfcc4c;
 }
 .box {
   align-items: center;
@@ -119,6 +115,6 @@ export default {
 }
 .txt2 {
   text-align: center;
-  color: #2e9afd;
+  color: #000000;
 }
 </style>

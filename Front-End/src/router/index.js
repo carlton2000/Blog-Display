@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // import Welcome from "../views/Welcome.vue";
-// import Signup from "../views/Signup.vue";
-// import Signin from "../views/Signin.vue";
+import Signup from "../views/Signup.vue";
+import Signin from "../views/Signin.vue";
 import Home from "../views/Home.vue";
 import CreateBlogPost from "../components/createBlogpost.vue";
 // import Fans from "../views/readerView.vue";
@@ -15,18 +15,18 @@ const routes = [
   //   name: "Welcome",
   //   component: Welcome
   // },
-  // {
-  //   path: "/signup",
-  //   name: "Registration",
-  //   component: Signup
-  // },
-  // {
-  //   path: "/signin",
-  //   name: "Log in    ",
-  //   component: Signin
-  // },
   {
     path: "/",
+    name: "Registration",
+    component: Signup
+  },
+  {
+    path: "/log",
+    name: "Log in    ",
+    component: Signin
+  },
+  {
+    path: "/Home",
     name: "Home",
     component: Home
   },

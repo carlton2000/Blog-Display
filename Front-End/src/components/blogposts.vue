@@ -18,7 +18,7 @@
       max-width="944"
     >
       <v-img
-        src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+        src="https://www.start-business-online.com/images/article_manager_uploads/blog.jpg"
         height="150px"
       ></v-img>
 

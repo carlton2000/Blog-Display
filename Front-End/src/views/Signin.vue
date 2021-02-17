@@ -33,12 +33,9 @@
           :disabled="!valid"
           color="success"
           class="mr-4"
+          to="/Home" exact
         >
           Submit
-        </v-btn>
-
-        <v-btn color="primary" class="mr-4" @click="reset">
-          Reset Form
         </v-btn>
       </v-form>
     </div>
@@ -108,7 +105,7 @@ export default {
 </script>
 <style scoped>
 #app {
-  background-color: #daedff;
+  background-color: #ffffff;
 }
 .box {
   align-items: center;
@@ -116,6 +113,6 @@ export default {
 }
 .txt2 {
   text-align: center;
-  color: #2e9afd;
+  color: #0c0c0b;
 }
 </style>
