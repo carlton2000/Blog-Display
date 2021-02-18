@@ -1,48 +1,57 @@
 <template>
   <v-app dark id="app">
     <div class="card">
-    <div class="box">
-      <v-form ref="form" v-model="valid" lazy-validation>
-        <h1 class="txt2">SIGN UP</h1>
-        <v-text-field
-          v-model="register.name"
-          :rules="nameRules"
-          label="Enter Your Name"
-          required
-        ></v-text-field>
+      <div class="box">
+        <v-form ref="form" v-model="valid" lazy-validation>
+          <h1 class="txt2">SIGN UP</h1>
+          <v-text-field
+            v-model="register.name"
+            :rules="nameRules"
+            label="Enter Your Name"
+            required
+          ></v-text-field>
 
-        <v-text-field
-          v-model="register.email"
-          :rules="emailRules"
-          label="Enter Your E-mail"
-          required
-        ></v-text-field>
+          <v-text-field
+            v-model="register.email"
+            :rules="emailRules"
+            label="Enter Your E-mail"
+            required
+          ></v-text-field>
 
-        <v-text-field
-          v-model="register.password"
-          :rules="passwordRules"
-          label="Enter Your Password"
-          required
-        ></v-text-field>
+          <v-text-field
+            v-model="register.password"
+            :rules="passwordRules"
+            label="Enter Your Password"
+            required
+          ></v-text-field>
 
-        <v-checkbox
-          v-model="checkbox"
-          :rules="[v => !!v || 'You must agree to continue!']"
-          label="Do you agree?"
-          required
-        ></v-checkbox>
+          <v-checkbox
+            v-model="checkbox"
+            :rules="[v => !!v || 'You must agree to continue!']"
+            label="Do you agree?"
+            required
+          ></v-checkbox>
 
+          <v-btn
+            v-on:click="SubRegister"
+            :disabled="!valid"
+            color="success"
+            class="mr-4"
+            to="/Home"
+            exact
+          >
+            Register
+          </v-btn>
         <v-btn
-          v-on:click="SubRegister"
-          :disabled="!valid"
-          color="success"
-          class="mr-4"
-          to="/Home" exact
-        >
-          Validate
+          class="move"
+           depressed
+           color="primary"
+           to="/log"
+          >
+           Login
         </v-btn>
-      </v-form>
-    </div>
+        </v-form>
+      </div>
     </div>
   </v-app>
 </template>
@@ -109,13 +118,17 @@ export default {
 };
 </script>
 <style scoped>
-#app{
-  background: grey;
+#app {
+  background: rgb(143, 135, 135);
 }
 .card {
   /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 3%;
+  background-color: #fff;
 }
 .box {
   align-items: center;
@@ -124,5 +137,8 @@ export default {
 .txt2 {
   text-align: center;
   color: #000000;
+}
+.move{
+  margin-right: 30%;
 }
 </style>

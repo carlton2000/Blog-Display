@@ -5,6 +5,7 @@ import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
 import Home from "../views/Home.vue";
 import CreateBlogPost from "../components/createBlogpost.vue";
+// import fNavln from "../components/fNavln.vue";
 // import Fans from "../views/readerView.vue";
 
 Vue.use(VueRouter);
@@ -25,6 +26,11 @@ const routes = [
     name: "Log in    ",
     component: Signin
   },
+  // {
+  //   path: "/fNavln",
+  //   name: "Navln",
+  //   component: fNavln
+  // },
   {
     path: "/Home",
     name: "Home",
@@ -34,7 +40,7 @@ const routes = [
     path: "/create",
     name: "Create",
     component: CreateBlogPost
-  },
+  }
   // {
   //   path: "/fHome",
   //   name: "ReadersView",

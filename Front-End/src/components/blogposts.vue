@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="marg">
     <br />
     <v-card class="mx-auto" max-width="944">
       <v-text-field
+        class="search"
         v-model="search"
         append-icon="mdi-magnify"
         label="Search Blog"
@@ -30,7 +31,8 @@
       </v-card-title>
 
       <v-card-subtitle>
-        <h5>Content: {{ blog.blog_content | snippet }}</h5>
+        <h5>Content: {{ blog.blog_content }}</h5>
+        <!-- | snippet  -->
       </v-card-subtitle>
 
       <v-card-actions>
@@ -43,7 +45,7 @@
           Delete
         </v-btn>
       </v-card-actions>
-    
+
       <!-- <v-alert
         :value="alert"
         color="blue"
@@ -53,9 +55,9 @@
         transition="scale-transition"
       >
        </v-alert> -->
-        <Comments></Comments>
-     
-       <br />
+      <Comments></Comments>
+
+      <br />
     </v-card>
   </div>
 </template>
@@ -170,3 +172,13 @@ export default {
   }
 };
 </script>
+<style scoped>
+.marg {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.search {
+  color: #0000;
+  background-color: rgb(126, 131, 126);
+}
+</style>

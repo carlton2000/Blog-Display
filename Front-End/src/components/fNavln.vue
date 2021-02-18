@@ -1,13 +1,10 @@
 <template>
-  <v-app-bar app color="primary" dark>
-    <!-- <div class="d-flex align-center">
-      <h1>Bloggy</h1>
-    </div>
+  <v-app-bar color="green">
     <v-spacer></v-spacer>
     <v-btn to="/" exact>
       <span class="mr-3">Logout</span>
       <v-icon>mdi-door</v-icon>
-    </v-btn> -->
+    </v-btn>
   </v-app-bar>
 </template>
 

@@ -1,5 +1,6 @@
 <template>
   <v-app dark id="app">
+    <div class="card">
     <div class="box">
       <v-form ref="form" v-model="valid" lazy-validation>
         <h1 class="txt2">LOG IN</h1>
@@ -33,11 +34,13 @@
           :disabled="!valid"
           color="success"
           class="mr-4"
-          to="/Home" exact
+          to="/Home"
+          exact
         >
           Submit
         </v-btn>
       </v-form>
+    </div>
     </div>
   </v-app>
 </template>
@@ -105,7 +108,16 @@ export default {
 </script>
 <style scoped>
 #app {
-  background-color: #ffffff;
+  background: rgb(143, 135, 135);
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 3%;
+  background-color: #fff;
 }
 .box {
   align-items: center;

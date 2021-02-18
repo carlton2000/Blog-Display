@@ -1,128 +1,97 @@
 <template>
-  <div class="center">
-    <br />
-    <br />
-    <v-card class="mx-auto" max-width="754">
-      <v-snackbar v-model="snackbar" absolute top right color="success">
-        <span>new blog post successfully added!</span>
-        <v-icon dark>
-          mdi-checkbox-marked-circle
-        </v-icon>
-      </v-snackbar>
-      <v-form ref="form" @submit.prevent="submit">
-        <h3 v-if="!edit">Create Blog</h3>
-        <h3 v-if="edit">Update Blog</h3>
-        <v-container fluid>
-          <v-row>
-            <v-col cols="12" sm="6">
-              <v-text-field
-                v-model="blog.title"
-                :rules="rules.name"
-                color="purple darken-2"
-                label="Blog Title"
-                required
-              ></v-text-field>
-              <v-text-field
-                v-model="blog.hashtag"
-                :rules="rules.name"
-                color="blue darken-2"
-                label="#TAG"
-                required
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12">
-              <v-textarea v-model="blog.blog_content" color="teal">
-                <template v-slot:label>
-                  <div>Blog Content <small>(optional)</small></div>
-                </template>
-              </v-textarea>
-            </v-col>
-          </v-row>
-        </v-container>
+  <v-app dark id="app">
+    <div class="center">
+      <br />
+      <br />
+      <v-card class="mx-auto" max-width="754" elevation="21">
+        <v-snackbar v-model="snackbar" absolute top right color="success">
+          <span>new blog post successfully added!</span>
+          <v-icon dark>
+            mdi-checkbox-marked-circle
+          </v-icon>
+        </v-snackbar>
+        <v-form ref="form" @submit.prevent="submit">
+          <h2 v-if="!edit" class="head">Create Blog</h2>
+          <h2 v-if="edit" class="head">Update Blog</h2>
+          <v-container fluid>
+            <v-row>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="blog.title"
+                  :rules="rules.name"
+                  color="purple darken-2"
+                  label="Blog Title"
+                  required
+                ></v-text-field>
+                <v-text-field
+                  v-model="blog.hashtag"
+                  :rules="rules.name"
+                  color="blue darken-2"
+                  label="#TAG"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-textarea v-model="blog.blog_content" color="teal">
+                  <template v-slot:label>
+                    <div>Blog Content <small>(optional)</small></div>
+                  </template>
+                </v-textarea>
+              </v-col>
+            </v-row>
+          </v-container>
+          <v-card-actions>
+            <v-btn text v-if="edit" v-on:click="UpdateBlog(blog._id)" type="">
+              Update
+            </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn
+              v-if="!edit"
+              v-on:click="handleAdd"
+              text
+              color="primary"
+              type="submit"
+            >
+              Create Blog
+            </v-btn>
+            <v-btn to="/Home" exact>
+              Home
+            </v-btn>
+          </v-card-actions>
+        </v-form>
+      </v-card>
+      <br />
+      <v-card v-for="blog in blogs" :key="blog" class="mx-auto" max-width="944">
+        <v-img
+          src="https://www.start-business-online.com/images/article_manager_uploads/blog.jpg"
+          height="150px"
+        ></v-img>
+
+        <v-card-title>
+          <h3>Title: {{ blog.title }}</h3>
+        </v-card-title>
+        <v-card-title>
+          <h4>HashTags : {{ blog.hashtag }}</h4>
+        </v-card-title>
+
+        <v-card-subtitle>
+          <h5>Content: {{ blog.blog_content }}</h5>
+        </v-card-subtitle>
+
         <v-card-actions>
-          <v-btn text v-if="edit" v-on:click="UpdateBlog(blog._id)" type="">
+          <v-btn @click="toggleUpdate(blog)" color="green lighten-1" text>
             Update
           </v-btn>
+          <v-btn v-on:click="DeleteBlog(blog._id)" color="red lighten-1" text>
+            Delete
+          </v-btn>
           <v-spacer></v-spacer>
-          <v-btn
-            v-if="!edit"
-            v-on:click="handleAdd"
-            text
-            color="primary"
-            type="submit"
-          >
-            Create Blog
-          </v-btn>
-          <v-btn 
-          to="/Home" exact
-          >
-            Home
-          </v-btn>
         </v-card-actions>
-      </v-form>
-    </v-card>
-    <br />
-    <v-card v-for="blog in blogs" :key="blog" class="mx-auto" max-width="944">
-      <v-img
-        src="https://www.start-business-online.com/images/article_manager_uploads/blog.jpg"
-        height="150px"
-      ></v-img>
-
-      <v-card-title>
-        <h3>Title: {{ blog.title }}</h3>
-      </v-card-title>
-      <v-card-title>
-        <h4>HashTags : {{ blog.hashtag }}</h4>
-      </v-card-title>
-
-      <v-card-subtitle>
-        <h5>Content: {{ blog.blog_content }}</h5>
-      </v-card-subtitle>
-
-      <v-card-actions>
-        <v-btn @click="toggleUpdate(blog)" color="green lighten-1" text>
-          Update
-        </v-btn>
-        <v-btn v-on:click="DeleteBlog(blog._id)" color="red lighten-1" text>
-          Delete
-        </v-btn>
-
-        <v-spacer></v-spacer>
-
-        <v-btn icon @click="show = !show">
-          <v-icon>{{ show ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
-        </v-btn>
-      </v-card-actions>
-
-      <v-expand-transition>
-        <div v-show="show">
-          <v-card-text>
-            <div class="font-weight-bold ml-8 mb-2">
-              Today
-            </div>
-
-            <v-timeline align-top dense>
-              <v-timeline-item
-                v-for="message in messages"
-                :key="message.time"
-                :color="message.color"
-                small
-              >
-                <div>
-                  <div class="font-weight-normal">
-                    <strong>{{ message.from }}</strong> @{{ message.time }}
-                  </div>
-                  <div>{{ message.message }}</div>
-                </div>
-              </v-timeline-item>
-            </v-timeline>
-          </v-card-text>
-        </div>
-      </v-expand-transition>
-    </v-card>
-    <br />
-    <br />
-  </div>
+      </v-card>
+      <br />
+      <br />
+    </div>
+  </v-app>
 </template>
 
 <script>
@@ -270,8 +239,14 @@ export default {
 </script>
 
 <style scoped>
+#app {
+  background: rgb(143, 135, 135);
+}
 .center {
   margin: auto;
   width: 60%;
+}
+.head{
+  text-align: center;
 }
 </style>
