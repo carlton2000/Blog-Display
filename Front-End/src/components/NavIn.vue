@@ -1,7 +1,7 @@
 <template>
   <v-app-bar app color="primary" dark>
     <div class="d-flex align-center">
-      <h1>Bloggy</h1>
+      <h1>Blog-Display</h1>
     </div>
     <v-spacer></v-spacer>
     <v-btn to="/create" exact>
@@ -9,10 +9,10 @@
       <v-icon>mdi-post</v-icon>
     </v-btn>
     <v-spacer></v-spacer>
-    <!-- <v-btn to="/" exact>
+    <v-btn to="/" exact>
       <span class="mr-3">Logout</span>
       <v-icon>mdi-door</v-icon>
-    </v-btn> -->
+    </v-btn> 
   </v-app-bar>
 </template>
 
